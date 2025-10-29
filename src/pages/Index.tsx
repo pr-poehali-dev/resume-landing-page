@@ -4,8 +4,30 @@ import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="font-montserrat font-bold text-xl text-foreground">А МЫ МОЖЕМ!</div>
+            <div className="hidden md:flex gap-6">
+              <button onClick={() => scrollToSection('about')} className="text-sm font-semibold hover:text-primary transition-colors">Обо мне</button>
+              <button onClick={() => scrollToSection('experience')} className="text-sm font-semibold hover:text-primary transition-colors">Опыт</button>
+              <button onClick={() => scrollToSection('skills')} className="text-sm font-semibold hover:text-primary transition-colors">Навыки</button>
+              <button onClick={() => scrollToSection('education')} className="text-sm font-semibold hover:text-primary transition-colors">Образование</button>
+              <button onClick={() => scrollToSection('portfolio')} className="text-sm font-semibold hover:text-primary transition-colors">Портфолио</button>
+              <button onClick={() => scrollToSection('contact')} className="text-sm font-semibold hover:text-primary transition-colors">Контакты</button>
+            </div>
+          </div>
+        </div>
+      </nav>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
