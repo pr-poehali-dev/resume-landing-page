@@ -12,11 +12,13 @@ const Index = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [parallaxOffset, setParallaxOffset] = useState(0);
   const { toast } = useToast();
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 500);
+      setParallaxOffset(window.scrollY * 0.5);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -112,9 +114,10 @@ const Index = () => {
       </nav>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-100"
           style={{
             backgroundImage: `url('https://cdn.poehali.dev/projects/9b77d5b5-01c9-463a-8e9a-908af4c60a54/files/ec98b9f4-e976-47bc-bdf1-4446e75a2b29.jpg')`,
+            transform: `translateY(${parallaxOffset}px)`,
           }}
         >
           <div className="absolute inset-0 bg-black/40"></div>
