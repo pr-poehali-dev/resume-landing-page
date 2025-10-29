@@ -349,9 +349,9 @@ const Index = () => {
                   <Icon name="GraduationCap" className="text-primary-foreground" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-montserrat font-bold text-2xl mb-2">Социальная работа</h3>
-                  <p className="text-muted-foreground mb-2">2015 - 2019</p>
-                  <p className="text-lg">Высшее образование по специальности "Социальная работа с людьми с ограниченными возможностями"</p>
+                  <h3 className="font-montserrat font-bold text-2xl mb-2">Аспирантура</h3>
+                  <p className="text-muted-foreground mb-2">НИУ ВШЭ Санкт-Петербург</p>
+                  <p className="text-lg">Аспирантура по направлению "Социология"</p>
                 </div>
               </div>
             </Card>
@@ -359,12 +359,12 @@ const Index = () => {
             <Card className="p-8 hover-scale scroll-reveal">
               <div className="flex items-start gap-4">
                 <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
-                  <Icon name="Award" className="text-primary-foreground" size={24} />
+                  <Icon name="BookOpen" className="text-primary-foreground" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-montserrat font-bold text-2xl mb-2">Курсы повышения квалификации</h3>
-                  <p className="text-muted-foreground mb-2">2020 - 2023</p>
-                  <p className="text-lg">Инклюзивное образование, арт-терапия, социальное проектирование</p>
+                  <h3 className="font-montserrat font-bold text-2xl mb-2">Филология</h3>
+                  <p className="text-muted-foreground mb-2">Высшее образование</p>
+                  <p className="text-lg">Дипломированный филолог-лингвист</p>
                 </div>
               </div>
             </Card>
@@ -375,73 +375,70 @@ const Index = () => {
       <section id="portfolio" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-12 text-foreground scroll-reveal">
-            Портфолио проектов
+            Публикации и интервью
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="overflow-hidden hover-scale scroll-reveal">
               <div className="bg-primary/10 h-48 flex items-center justify-center">
-                <Icon name="Palette" className="text-primary" size={64} />
+                <Icon name="Newspaper" className="text-primary" size={64} />
               </div>
               <div className="p-6">
-                <h3 className="font-montserrat font-bold text-2xl mb-3">Творческие мастерские</h3>
+                <h3 className="font-montserrat font-bold text-2xl mb-3">«Такие дела»</h3>
                 <p className="text-muted-foreground mb-4">
-                  Организация еженедельных занятий по рисованию, лепке и рукоделию для людей с особенностями развития
+                  Интервью и материалы о жизни людей с ДЦП, публикации о социальных проблемах и решениях
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge>Арт-терапия</Badge>
-                  <Badge>Инклюзия</Badge>
-                  <Badge>Творчество</Badge>
+                  <Badge>СМИ</Badge>
+                  <Badge>Социальная тематика</Badge>
                 </div>
               </div>
             </Card>
 
             <Card className="overflow-hidden hover-scale scroll-reveal">
               <div className="bg-primary/10 h-48 flex items-center justify-center">
-                <Icon name="Music" className="text-primary" size={64} />
+                <Icon name="Mic" className="text-primary" size={64} />
               </div>
               <div className="p-6">
-                <h3 className="font-montserrat font-bold text-2xl mb-3">Инклюзивный фестиваль</h3>
+                <h3 className="font-montserrat font-bold text-2xl mb-3">«Жизнь с ДЦП»</h3>
                 <p className="text-muted-foreground mb-4">
-                  Ежегодный фестиваль талантов, где люди с инвалидностью демонстрируют свои способности в музыке, танцах и театре
+                  Спикер и эксперт проекта, рассказывающий о реальной жизни людей с особенностями здоровья
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge>Мероприятие</Badge>
-                  <Badge>Социализация</Badge>
-                  <Badge>Культура</Badge>
+                  <Badge>Медиа</Badge>
+                  <Badge>Личные истории</Badge>
                 </div>
               </div>
             </Card>
 
             <Card className="overflow-hidden hover-scale scroll-reveal">
               <div className="bg-primary/10 h-48 flex items-center justify-center">
-                <Icon name="Laptop" className="text-primary" size={64} />
+                <Icon name="Users" className="text-primary" size={64} />
               </div>
               <div className="p-6">
-                <h3 className="font-montserrat font-bold text-2xl mb-3">Онлайн-платформа</h3>
+                <h3 className="font-montserrat font-bold text-2xl mb-3">НИУ ВШЭ</h3>
                 <p className="text-muted-foreground mb-4">
-                  Создание интернет-ресурса для обмена опытом, поиска помощи и общения людей с ОВЗ
+                  Выступления и публикации на платформе вуза, участие в научных конференциях и Open Talks
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge>IT</Badge>
-                  <Badge>Сообщество</Badge>
-                  <Badge>Поддержка</Badge>
+                  <Badge>Наука</Badge>
+                  <Badge>Конференции</Badge>
                 </div>
               </div>
             </Card>
 
             <Card className="overflow-hidden hover-scale scroll-reveal">
               <div className="bg-primary/10 h-48 flex items-center justify-center">
-                <Icon name="Heart" className="text-primary" size={64} />
+                <Icon name="MessageCircle" className="text-primary" size={64} />
               </div>
               <div className="p-6">
-                <h3 className="font-montserrat font-bold text-2xl mb-3">Группы взаимопомощи</h3>
+                <h3 className="font-montserrat font-bold text-2xl mb-3">«А мы можем!»</h3>
                 <p className="text-muted-foreground mb-4">
-                  Регулярные встречи для обмена опытом, эмоциональной поддержки и решения общих проблем
+                  Авторский проект с интервью, историями и обсуждением актуальных социальных тем
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge>Психология</Badge>
-                  <Badge>Поддержка</Badge>
-                  <Badge>Общение</Badge>
+                  <Badge>Авторский проект</Badge>
+                  <Badge>Интервью</Badge>
+                  <Badge>VK</Badge>
                 </div>
               </div>
             </Card>
