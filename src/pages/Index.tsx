@@ -1,12 +1,18 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 import { useState, useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +25,20 @@ const Index = () => {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    setTimeout(() => {
+      toast({
+        title: "Сообщение отправлено!",
+        description: "Мы свяжемся с вами в ближайшее время.",
+      });
+      setFormData({ name: '', email: '', message: '' });
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   const scrollToSection = (id: string) => {
@@ -343,42 +363,98 @@ const Index = () => {
       </section>
 
       <section id="contact" className="py-20 px-4 bg-secondary/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-8 text-foreground">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-8 text-foreground text-center">
             Контакты
           </h2>
-          <p className="text-xl text-muted-foreground mb-12">
+          <p className="text-xl text-muted-foreground mb-12 text-center">
             Свяжитесь с нами для сотрудничества или участия в проектах
           </p>
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <Card className="p-6 hover-scale">
               <Icon name="Mail" className="text-primary mb-4 mx-auto" size={40} />
-              <h3 className="font-bold mb-2">Email</h3>
-              <p className="text-muted-foreground">info@amymozhem.ru</p>
+              <h3 className="font-bold mb-2 text-center">Email</h3>
+              <p className="text-muted-foreground text-center">info@amymozhem.ru</p>
             </Card>
 
             <Card className="p-6 hover-scale">
               <Icon name="Phone" className="text-primary mb-4 mx-auto" size={40} />
-              <h3 className="font-bold mb-2">Телефон</h3>
-              <p className="text-muted-foreground">+7 (999) 123-45-67</p>
+              <h3 className="font-bold mb-2 text-center">Телефон</h3>
+              <p className="text-muted-foreground text-center">+7 (999) 123-45-67</p>
             </Card>
 
             <Card className="p-6 hover-scale">
               <Icon name="MessageCircle" className="text-primary mb-4 mx-auto" size={40} />
-              <h3 className="font-bold mb-2">ВКонтакте</h3>
+              <h3 className="font-bold mb-2 text-center">ВКонтакте</h3>
               <a 
                 href="https://vk.com/amymozhem" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-primary hover:underline"
+                className="text-primary hover:underline block text-center"
               >
                 vk.com/amymozhem
               </a>
             </Card>
           </div>
-          <Button size="lg" className="font-montserrat font-bold text-lg px-8 py-6">
-            Написать нам
-          </Button>
+
+          <Card className="p-8 max-w-2xl mx-auto">
+            <h3 className="font-montserrat font-bold text-2xl mb-6 text-center">Напишите нам</h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-semibold mb-2">
+                  Ваше имя
+                </label>
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="Введите ваше имя"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold mb-2">
+                  Email
+                </label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="Введите ваш email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-semibold mb-2">
+                  Сообщение
+                </label>
+                <Textarea
+                  id="message"
+                  placeholder="Расскажите, чем мы можем помочь"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  required
+                  rows={5}
+                  className="w-full resize-none"
+                />
+              </div>
+
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full font-montserrat font-bold text-lg"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Отправка...' : 'Отправить сообщение'}
+              </Button>
+            </form>
+          </Card>
         </div>
       </section>
 
