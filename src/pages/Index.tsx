@@ -2,12 +2,16 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { useState } from "react";
 
 const Index = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setIsMenuOpen(false);
     }
   };
 
@@ -17,6 +21,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="font-montserrat font-bold text-xl text-foreground">А МЫ МОЖЕМ!</div>
+            
             <div className="hidden md:flex gap-6">
               <button onClick={() => scrollToSection('about')} className="text-sm font-semibold hover:text-primary transition-colors">Обо мне</button>
               <button onClick={() => scrollToSection('experience')} className="text-sm font-semibold hover:text-primary transition-colors">Опыт</button>
@@ -25,7 +30,28 @@ const Index = () => {
               <button onClick={() => scrollToSection('portfolio')} className="text-sm font-semibold hover:text-primary transition-colors">Портфолио</button>
               <button onClick={() => scrollToSection('contact')} className="text-sm font-semibold hover:text-primary transition-colors">Контакты</button>
             </div>
+
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 hover:bg-secondary rounded-lg transition-colors"
+              aria-label="Меню"
+            >
+              <Icon name={isMenuOpen ? "X" : "Menu"} size={24} />
+            </button>
           </div>
+
+          {isMenuOpen && (
+            <div className="md:hidden mt-4 py-4 border-t animate-fade-in">
+              <div className="flex flex-col gap-4">
+                <button onClick={() => scrollToSection('about')} className="text-left font-semibold hover:text-primary transition-colors py-2">Обо мне</button>
+                <button onClick={() => scrollToSection('experience')} className="text-left font-semibold hover:text-primary transition-colors py-2">Опыт</button>
+                <button onClick={() => scrollToSection('skills')} className="text-left font-semibold hover:text-primary transition-colors py-2">Навыки</button>
+                <button onClick={() => scrollToSection('education')} className="text-left font-semibold hover:text-primary transition-colors py-2">Образование</button>
+                <button onClick={() => scrollToSection('portfolio')} className="text-left font-semibold hover:text-primary transition-colors py-2">Портфолио</button>
+                <button onClick={() => scrollToSection('contact')} className="text-left font-semibold hover:text-primary transition-colors py-2">Контакты</button>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
