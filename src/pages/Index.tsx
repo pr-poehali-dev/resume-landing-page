@@ -144,40 +144,86 @@ const Index = () => {
           <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-8 text-foreground scroll-reveal">
             Обо мне
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="p-8 hover-scale scroll-reveal">
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                Проект «А мы можем!» создан для поддержки взрослых людей с ДЦП и другими особенностями развития. 
-                Мы верим, что каждый человек способен на большее, чем кажется на первый взгляд.
-              </p>
-            </Card>
-            <Card className="p-8 hover-scale scroll-reveal">
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                Наша миссия — показать обществу возможности людей с инвалидностью, помочь им раскрыть свой потенциал 
-                и найти своё место в жизни.
-              </p>
-            </Card>
-          </div>
+          <Card className="p-8 mb-8 scroll-reveal">
+            <p className="text-xl leading-relaxed mb-6">
+              Привет, я - <strong>Александра Полякова</strong> - создатель этой группы, а ещё...
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0">💼</span>
+                  <p className="text-lg">Аспирант НИУ ВШЭ СПб (Социология), исследователь, дипломированный филолог-лингвист</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0">🌱</span>
+                  <p className="text-lg">Автор и руководитель проектов по онлайн-социализации взрослых с ДЦП, представитель ДЦП-сообщества</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0">📚</span>
+                  <p className="text-lg">Победитель конференций, участник Open Talks и круглых столов</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0">😎</span>
+                  <p className="text-lg">Интервьюер в собственных проектах и спикер «Таких дел», «Жизнь с ДЦП» и НИУ ВШЭ</p>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0">💡</span>
+                  <p className="text-lg">Вещатель о трудоустройстве, саморазвитии и жизни с ДЦП</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl flex-shrink-0">❣️</span>
+                  <p className="text-lg">Красивая, эрудированная девушка с сильным характером, с которой на самом деле максимально комфортно (по мнению моих гостей)</p>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="p-8 bg-primary/5 scroll-reveal">
+            <h3 className="font-montserrat font-bold text-2xl mb-6 text-center">Тут ВСЕГДА:</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">✍️</span>
+                <p className="text-lg">Истории реальных людей</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">✍️</span>
+                <p className="text-lg">Честное обсуждение остро социальных тем</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">✍️</span>
+                <p className="text-lg">Выпуски по заявкам подписчиков</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">✍️</span>
+                <p className="text-lg">Яркие впечатления</p>
+              </div>
+            </div>
+            <p className="text-center font-montserrat font-bold text-xl mt-8 text-primary">
+              Подписывайтесь, ведь кто бы что ни говорил - А МЫ МОЖЕМ!
+            </p>
+          </Card>
         </div>
       </section>
 
       <section id="experience" className="py-20 px-4 bg-secondary/30">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-12 text-foreground scroll-reveal">
-            Опыт работы
+            Опыт и достижения
           </h2>
           <div className="space-y-8">
             <Card className="p-8 hover-scale scroll-reveal">
               <div className="flex items-start gap-4">
                 <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
-                  <Icon name="Heart" className="text-primary-foreground" size={24} />
+                  <Icon name="GraduationCap" className="text-primary-foreground" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-montserrat font-bold text-2xl mb-2">Волонтёрская деятельность</h3>
-                  <p className="text-muted-foreground mb-2">2018 - настоящее время</p>
+                  <h3 className="font-montserrat font-bold text-2xl mb-2">Научная деятельность</h3>
+                  <p className="text-muted-foreground mb-2">НИУ ВШЭ СПб</p>
                   <p className="text-lg leading-relaxed">
-                    Организация мероприятий, тренингов и встреч для людей с особенностями развития. 
-                    Создание инклюзивного сообщества.
+                    Аспирант по направлению Социология, исследователь социальных процессов. 
+                    Дипломированный филолог-лингвист.
                   </p>
                 </div>
               </div>
@@ -189,11 +235,27 @@ const Index = () => {
                   <Icon name="Users" className="text-primary-foreground" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-montserrat font-bold text-2xl mb-2">Социальные проекты</h3>
-                  <p className="text-muted-foreground mb-2">2020 - настоящее время</p>
+                  <h3 className="font-montserrat font-bold text-2xl mb-2">Проекты по онлайн-социализации</h3>
+                  <p className="text-muted-foreground mb-2">Автор и руководитель</p>
                   <p className="text-lg leading-relaxed">
-                    Запуск образовательных программ, мастер-классов и творческих мастерских 
-                    для интеграции в общество.
+                    Создание и развитие проектов для онлайн-социализации взрослых с ДЦП. 
+                    Представитель ДЦП-сообщества.
+                  </p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 hover-scale scroll-reveal">
+              <div className="flex items-start gap-4">
+                <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
+                  <Icon name="Award" className="text-primary-foreground" size={24} />
+                </div>
+                <div>
+                  <h3 className="font-montserrat font-bold text-2xl mb-2">Публичные выступления</h3>
+                  <p className="text-muted-foreground mb-2">Спикер и интервьюер</p>
+                  <p className="text-lg leading-relaxed">
+                    Победитель конференций, участник Open Talks и круглых столов. 
+                    Спикер «Таких дел», «Жизнь с ДЦП» и НИУ ВШЭ.
                   </p>
                 </div>
               </div>
@@ -205,11 +267,11 @@ const Index = () => {
                   <Icon name="Megaphone" className="text-primary-foreground" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-montserrat font-bold text-2xl mb-2">Информационная работа</h3>
-                  <p className="text-muted-foreground mb-2">2019 - настоящее время</p>
+                  <h3 className="font-montserrat font-bold text-2xl mb-2">Просветительская деятельность</h3>
+                  <p className="text-muted-foreground mb-2">Эксперт по социальным вопросам</p>
                   <p className="text-lg leading-relaxed">
-                    Ведение социальных сетей, публикация статей и материалов о жизни людей с инвалидностью. 
-                    Борьба со стереотипами.
+                    Освещение тем трудоустройства, саморазвития и жизни с ДЦП. 
+                    Интервьюер в собственных проектах.
                   </p>
                 </div>
               </div>
