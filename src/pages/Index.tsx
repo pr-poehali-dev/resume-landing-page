@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
@@ -20,7 +20,29 @@ const Index = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -115,18 +137,18 @@ const Index = () => {
       </section>
 
       <section id="about" className="py-20 px-4 max-w-6xl mx-auto">
-        <div className="animate-fade-in">
-          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-8 text-foreground">
+        <div>
+          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-8 text-foreground scroll-reveal">
             Обо мне
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="p-8 hover-scale">
+            <Card className="p-8 hover-scale scroll-reveal">
               <p className="text-lg leading-relaxed text-muted-foreground">
                 Проект «А мы можем!» создан для поддержки взрослых людей с ДЦП и другими особенностями развития. 
                 Мы верим, что каждый человек способен на большее, чем кажется на первый взгляд.
               </p>
             </Card>
-            <Card className="p-8 hover-scale">
+            <Card className="p-8 hover-scale scroll-reveal">
               <p className="text-lg leading-relaxed text-muted-foreground">
                 Наша миссия — показать обществу возможности людей с инвалидностью, помочь им раскрыть свой потенциал 
                 и найти своё место в жизни.
@@ -138,11 +160,11 @@ const Index = () => {
 
       <section id="experience" className="py-20 px-4 bg-secondary/30">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-12 text-foreground">
+          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-12 text-foreground scroll-reveal">
             Опыт работы
           </h2>
           <div className="space-y-8">
-            <Card className="p-8 hover-scale">
+            <Card className="p-8 hover-scale scroll-reveal">
               <div className="flex items-start gap-4">
                 <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
                   <Icon name="Heart" className="text-primary-foreground" size={24} />
@@ -158,7 +180,7 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="p-8 hover-scale">
+            <Card className="p-8 hover-scale scroll-reveal">
               <div className="flex items-start gap-4">
                 <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
                   <Icon name="Users" className="text-primary-foreground" size={24} />
@@ -174,7 +196,7 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="p-8 hover-scale">
+            <Card className="p-8 hover-scale scroll-reveal">
               <div className="flex items-start gap-4">
                 <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
                   <Icon name="Megaphone" className="text-primary-foreground" size={24} />
@@ -195,11 +217,11 @@ const Index = () => {
 
       <section id="skills" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-12 text-foreground">
+          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-12 text-foreground scroll-reveal">
             Навыки и компетенции
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="p-6 hover-scale">
+            <Card className="p-6 hover-scale scroll-reveal">
               <Icon name="MessageCircle" className="text-primary mb-4" size={40} />
               <h3 className="font-montserrat font-bold text-xl mb-3">Коммуникация</h3>
               <p className="text-muted-foreground">
@@ -207,7 +229,7 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-6 hover-scale">
+            <Card className="p-6 hover-scale scroll-reveal">
               <Icon name="Lightbulb" className="text-primary mb-4" size={40} />
               <h3 className="font-montserrat font-bold text-xl mb-3">Креативность</h3>
               <p className="text-muted-foreground">
@@ -215,7 +237,7 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-6 hover-scale">
+            <Card className="p-6 hover-scale scroll-reveal">
               <Icon name="Target" className="text-primary mb-4" size={40} />
               <h3 className="font-montserrat font-bold text-xl mb-3">Организация</h3>
               <p className="text-muted-foreground">
@@ -223,7 +245,7 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-6 hover-scale">
+            <Card className="p-6 hover-scale scroll-reveal">
               <Icon name="BookOpen" className="text-primary mb-4" size={40} />
               <h3 className="font-montserrat font-bold text-xl mb-3">Образование</h3>
               <p className="text-muted-foreground">
@@ -231,7 +253,7 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-6 hover-scale">
+            <Card className="p-6 hover-scale scroll-reveal">
               <Icon name="Camera" className="text-primary mb-4" size={40} />
               <h3 className="font-montserrat font-bold text-xl mb-3">SMM</h3>
               <p className="text-muted-foreground">
@@ -239,7 +261,7 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-6 hover-scale">
+            <Card className="p-6 hover-scale scroll-reveal">
               <Icon name="HandHeart" className="text-primary mb-4" size={40} />
               <h3 className="font-montserrat font-bold text-xl mb-3">Волонтёрство</h3>
               <p className="text-muted-foreground">
@@ -252,11 +274,11 @@ const Index = () => {
 
       <section id="education" className="py-20 px-4 bg-secondary/30">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-12 text-foreground">
+          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-12 text-foreground scroll-reveal">
             Образование
           </h2>
           <div className="space-y-6">
-            <Card className="p-8 hover-scale">
+            <Card className="p-8 hover-scale scroll-reveal">
               <div className="flex items-start gap-4">
                 <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
                   <Icon name="GraduationCap" className="text-primary-foreground" size={24} />
@@ -269,7 +291,7 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="p-8 hover-scale">
+            <Card className="p-8 hover-scale scroll-reveal">
               <div className="flex items-start gap-4">
                 <div className="bg-primary rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
                   <Icon name="Award" className="text-primary-foreground" size={24} />
@@ -287,11 +309,11 @@ const Index = () => {
 
       <section id="portfolio" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-12 text-foreground">
+          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-12 text-foreground scroll-reveal">
             Портфолио проектов
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="overflow-hidden hover-scale">
+            <Card className="overflow-hidden hover-scale scroll-reveal">
               <div className="bg-primary/10 h-48 flex items-center justify-center">
                 <Icon name="Palette" className="text-primary" size={64} />
               </div>
@@ -308,7 +330,7 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="overflow-hidden hover-scale">
+            <Card className="overflow-hidden hover-scale scroll-reveal">
               <div className="bg-primary/10 h-48 flex items-center justify-center">
                 <Icon name="Music" className="text-primary" size={64} />
               </div>
@@ -325,7 +347,7 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="overflow-hidden hover-scale">
+            <Card className="overflow-hidden hover-scale scroll-reveal">
               <div className="bg-primary/10 h-48 flex items-center justify-center">
                 <Icon name="Laptop" className="text-primary" size={64} />
               </div>
@@ -342,7 +364,7 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="overflow-hidden hover-scale">
+            <Card className="overflow-hidden hover-scale scroll-reveal">
               <div className="bg-primary/10 h-48 flex items-center justify-center">
                 <Icon name="Heart" className="text-primary" size={64} />
               </div>
@@ -364,26 +386,26 @@ const Index = () => {
 
       <section id="contact" className="py-20 px-4 bg-secondary/30">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-8 text-foreground text-center">
+          <h2 className="font-montserrat font-bold text-4xl md:text-5xl mb-8 text-foreground text-center scroll-reveal">
             Контакты
           </h2>
           <p className="text-xl text-muted-foreground mb-12 text-center">
             Свяжитесь с нами для сотрудничества или участия в проектах
           </p>
           <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <Card className="p-6 hover-scale">
+            <Card className="p-6 hover-scale scroll-reveal">
               <Icon name="Mail" className="text-primary mb-4 mx-auto" size={40} />
               <h3 className="font-bold mb-2 text-center">Email</h3>
               <p className="text-muted-foreground text-center">info@amymozhem.ru</p>
             </Card>
 
-            <Card className="p-6 hover-scale">
+            <Card className="p-6 hover-scale scroll-reveal">
               <Icon name="Phone" className="text-primary mb-4 mx-auto" size={40} />
               <h3 className="font-bold mb-2 text-center">Телефон</h3>
               <p className="text-muted-foreground text-center">+7 (999) 123-45-67</p>
             </Card>
 
-            <Card className="p-6 hover-scale">
+            <Card className="p-6 hover-scale scroll-reveal">
               <Icon name="MessageCircle" className="text-primary mb-4 mx-auto" size={40} />
               <h3 className="font-bold mb-2 text-center">ВКонтакте</h3>
               <a 
@@ -397,7 +419,7 @@ const Index = () => {
             </Card>
           </div>
 
-          <Card className="p-8 max-w-2xl mx-auto">
+          <Card className="p-8 max-w-2xl mx-auto scroll-reveal">
             <h3 className="font-montserrat font-bold text-2xl mb-6 text-center">Напишите нам</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
